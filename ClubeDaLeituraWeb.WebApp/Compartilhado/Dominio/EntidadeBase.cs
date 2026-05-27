@@ -4,7 +4,7 @@ namespace ClubeDaLeituraWeb.WebApp.Compartilhado.Dominio;
 
 public abstract class EntidadeBase<T>
 {
-    public string id { get; set; } = Convert
+    public string Id { get; set; } = Convert
         .ToHexStringLower(RandomNumberGenerator.GetBytes(20))
         .Substring(0, 7);
 

@@ -7,7 +7,7 @@ public sealed class ContextoJson
 {
     private readonly string caminhoArquivo;
 
-    public ContexroJson()
+    public ContextoJson()
     {
         string caminhoAppData = Environment
             .GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
