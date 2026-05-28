@@ -1,11 +1,14 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Dominio;
+namespace ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
 
-namespace ClubeDaLeituraWeb.WebApp.Compartilhado.Dominio;
 
 public sealed class ContextoJson
 {
     private readonly string caminhoArquivo;
+
+    public List<Caixa> Caixas { get; set; } = new List<Caixa>();
 
     public ContextoJson()
     {
@@ -42,10 +45,12 @@ public sealed class ContextoJson
         opcoesJson.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         opcoesJson.ReferenceHandler = ReferenceHandler.Preserve;
 
-        ContextoJson? contextoJson = JsonSerializer
+        ContextoJson? contextoSalvo = JsonSerializer
             .Deserialize<ContextoJson>(jsonString, opcoesJson);
 
-        if (contextoJson == null)
+        if (contextoSalvo == null)
             return;
+
+        Caixas = contextoSalvo.Caixas;
     }
 }

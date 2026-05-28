@@ -1,4 +1,6 @@
-namespace ClubeDaLeituraWeb.WebApp.Compartilhado.Dominio;
+using ClubeDaLeituraWeb.WebApp.Compartilhado.Dominio;
+
+namespace ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
 
 public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase<T>
 {
