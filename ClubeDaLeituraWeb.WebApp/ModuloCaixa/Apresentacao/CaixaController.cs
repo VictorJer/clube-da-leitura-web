@@ -77,7 +77,7 @@ public class CaixaController : Controller
         EditarCaixaViewModel editarVm = new EditarCaixaViewModel(
             id,
             caixa.Etiqueta,
-            caixa.DiasDeEmprestimo,
+            caixa.DiasDeEmprestimo.ToString(),
             caixa.Cor
         );
 
