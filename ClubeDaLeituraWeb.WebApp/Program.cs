@@ -1,12 +1,11 @@
 using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
 using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Dominio;
 using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Infra.Repositorio;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.Options;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Configuraçâo de Serviço de Infraestrutura
 
 builder.Services.AddScoped<ContextoJson>(provider =>
 {
@@ -19,6 +18,10 @@ builder.Services.AddScoped<ContextoJson>(provider =>
 
 builder.Services.AddScoped<IRepositorioCaixa, RepositorioCaixaEmArquivo>();
 
+#endregion
+
+#region Configuração de MVC
+
 builder.Services.AddControllersWithViews().AddRazorOptions((options) =>
 {
     // Resetar a configu padrão do MVC
@@ -30,6 +33,8 @@ builder.Services.AddControllersWithViews().AddRazorOptions((options) =>
     // Views dos módulos: /Compartilhado/Apresentacao/Views/_Layout.cshtml
     options.ViewLocationFormats.Add("/Compartilhado/Apresentacao/Views/{0}.cshtml");
 });
+
+#endregion
 
 var app = builder.Build();
 
