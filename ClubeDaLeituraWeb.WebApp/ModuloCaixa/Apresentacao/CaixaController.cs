@@ -2,6 +2,7 @@ using ClubeDaLeituraWeb.WebApp.Compartilhado.Infra.Arquivos;
 using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Dominio;
 using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Infra.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using ClubeDaLeituraWeb.WebApp.ModuloCaixa.Aplicacao;
 
 namespace ClubeDaLeituraWeb.WebApp.ModuloCaixa.Apresentacao;
 
@@ -69,6 +70,8 @@ public class CaixaController : Controller
     [HttpGet]
     public ActionResult Editar(string id)
     {
+        Results<DetalhesCaixaDto> resultado = servicoCaixa.SelecionarPorId(id);
+
         Caixa? caixa = repositorioCaixa.SelecionarPorId(id);
 
         if (caixa == null)
@@ -77,7 +80,7 @@ public class CaixaController : Controller
         EditarCaixaViewModel editarVm = new EditarCaixaViewModel(
             id,
             caixa.Etiqueta,
-            caixa.DiasDeEmprestimo.ToString(),
+            caixa.DiasDeEmprestimo,
             caixa.Cor
         );
 

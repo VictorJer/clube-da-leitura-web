@@ -21,6 +21,20 @@ public record CadastrarCaixaViewModel(
     int DiasDeEmprestimo
 );
 
+public record EditarCaixaViewModel(
+    string Id,
+
+    [Required(ErrorMessage = "O campo \"Etiqueta\" deve ser preenchido.")]
+    [StringLength(50, ErrorMessage = "O campo \"Cor\" deve Conter no maximo 50 carecteres.")]
+    string Etiqueta,
+
+    [Required(ErrorMessage = "O campo \"Corz\" deve ser preenchido")]
+    string Cor,
+
+    [Range(1, int.MaxValue, ErrorMessage = "Ocampo \"Dias de Emprestimo\" deve conter um valor maior que 0.")]
+    int DiasDeEmprestimo
+);
+
 public record ExcluirCaixaViewModel(
     string Id,
     string Etiqueta,
@@ -28,9 +42,4 @@ public record ExcluirCaixaViewModel(
     int DiasDeEmprestimo
 );
 
-public record EditarCaixaViewModel(
-    string Id,
-    string Etiqueta,
-    string Cor,
-    int DiasDeEmprestimo
-);
+
